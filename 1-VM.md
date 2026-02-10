@@ -1,18 +1,25 @@
 # Configuración de la VM (Guest)
 
-## Recopilando información:
-NOTA IMPORTANTE: ESTE PASO ES OPCIONAL, Y SIRVE SOLAMENTE PARA QUE LA MAQUINA VIRTUAL NO SEA DETECTADA POR ANTICHEATS, ESTO PUEDE DEJAR DE FUNCIONAR EN CUALQUIER MOMENTO, NO NOS HACEMOS RESPOSABLES DE CUALQUIER BAN CAUSADO POR ESTO.
+## Recopilando información
+
+NOTA IMPORTANTE: ESTE PASO ES OPCIONAL, Y SIRVE SOLAMENTE PARA QUE LA MAQUINA VIRTUAL
+NO SEA DETECTADA POR ANTICHEATS, ESTO PUEDE DEJAR DE FUNCIONAR EN CUALQUIER
+MOMENTO, NO NOS HACEMOS RESPOSABLES DE CUALQUIER BAN CAUSADO POR ESTO.
 
 Ejecutamos el siguiente comando:
+
 ```bash
 sudo dmidecode
 ```
+
 O si es demasiado texto:
+
 ```bash
 sudo dmidecode --type <tipo>
 ```
 
-Con la información, edita el siguiente "molde" con tu información y agrega llaves si es necesario:
+Con la información, edita el siguiente "molde" con tu
+información y agrega llaves si es necesario:
 
 ```xml
 <sysinfo type="smbios">
@@ -44,16 +51,18 @@ Con la información, edita el siguiente "molde" con tu información y agrega lla
 </sysinfo>
 ```
 
-NOTA: Si has decidido agregar la clave de UUID, guardalá, la necesitaras luego.
+NOTA: Si has decidido agregar la clave de UUID, guárdala, la necesitaras luego.
 
-## Creando la maquina virtual:
+## Creando la máquina virtual
 
-Ejecutamos virt-manager
+Ejecutamos ```virt-manager```
 
 Si aparece ```QEMU/KVM Not Connected```, se debe activar el servicio de ```systemd```:
+
 ```bash
 sudo systemctl enable --now libvirtd
 ```
+
 NOTA: se pueden activar módulos por separado (mirar ```virtqemud*```)
 
 Vamos a ```File > New Virtual Machine``` y seleccionamos las siguientes opciones:
