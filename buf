@@ -11,6 +11,7 @@ vfio
 2.1 kernel
 2.2 bind/unbind
 2.3 libvirt hooks
+IMPORTANTE: PARA LOS HOOKS USAR LSOF PARA COMBROBAR SI SE PUEDE HACER BIND
 2.4 group
 
 cosas guest
