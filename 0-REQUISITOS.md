@@ -65,4 +65,4 @@ cómo ```01:00.1``` (Su dispositivo de audio).
 
 NOTA IMPORTANTE: NO PASAR LOS ```Bridge```, (incluye los ```PCI Bridge```).
 
-Puedes continuar [aquí](https://github.com/guluc3m/vfio-passthrough/blob/main/1-VFIO.md)
+Puedes continuar [aquí](https://github.com/guluc3m/vfio-passthrough/blob/main/1-VM.md)
