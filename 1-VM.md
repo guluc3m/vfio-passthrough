@@ -121,9 +121,10 @@ sudo virsh net-autostart --network default
 - `UEFI x86_64: OVMF_CODE.fd` para Windows 10
   - NOTA: Si NO sale, se debe instalar el paquete `edk2-ovmf`
   y reiniciar `virt-manager`
--
 
 #### 2. CPUs
+
+- Activar `Copy host CPU configuration (host-passthrough)`
 
 ##### Para procesadores Intel de 12ava en adelante
 
@@ -174,7 +175,77 @@ Con el modelo de la CPU, lo buscamos online para ver las características
   - Tengo 20 hilos, 6 P-cores (cada uno tiene 2 hilos) y 8 E-cores
   - A la maquina virtual le asigno los 6 P-cores, es decir, los hilos 0-11
 
+Por tanto mi configuración de CPU quedaría así:
+
+```xml
+<vcpu placement="static">12</vcpu>
+<cputune>
+  <vcpupin vcpu="0" cpuset="0"/>
+  <vcpupin vcpu="1" cpuset="1"/>
+  <vcpupin vcpu="2" cpuset="2"/>
+  <vcpupin vcpu="3" cpuset="3"/>
+  <vcpupin vcpu="4" cpuset="4"/>
+  <vcpupin vcpu="5" cpuset="5"/>
+  <vcpupin vcpu="6" cpuset="6"/>
+  <vcpupin vcpu="7" cpuset="7"/>
+  <vcpupin vcpu="8" cpuset="8"/>
+  <vcpupin vcpu="9" cpuset="9"/>
+  <vcpupin vcpu="10" cpuset="10"/>
+  <vcpupin vcpu="11" cpuset="11"/>
+  <emulatorpin cpuset="12-19"/>
+</cputune>
+```
+
+Esto va en el XML de la máquina virtual. Para editar el XML,
+vamos a `Overview > XML` y metemos este trozo de código dentro de la etiqueta `<domain>`.
+
+#### Para otros procesadores
+
+- Asignar los nucleos deseados, se recomienda un mínimo de 4.
+
 #### 3. SMBIOS (OPCIONAL)
 
-- Este paso complementa el apartado de `Recopilando información`, en caso que no se siga,
-  este paso se puede omitir.
+Este paso complementa el apartado de `Recopilando información`,
+  en caso que no se siga, este paso se puede omitir.
+
+- Cogemos el XML que guardamos del apartado `Recopilando información`
+  y lo pegamos dentro del XML de la máquina virtual.
+  Para editar el XML, vamos a `Overview > XML`
+  y metemos este trozo de código dentro de la etiqueta `<domain>`.
+- Cambiamos el valor de `uuid` al valor que guardamos
+  del apartado `Recopilando información`.
+
+#### 4. Hardware añadido
+
+Para agregar hardware, le damos a la pestaña `Add Hardware` y
+seleccionamos el hardware que queremos agregar.
+
+Debemos agregar:
+
+- VirtIO Keyboard
+- VirtIO Mouse / Tablet
+- Storage
+  - Device type: `CDROM device`
+  - Bus type: `SATA`
+  - Seleccionamos la imagen ISO de VirtIO
+
+#### 5. Hardware modificado
+
+Cambiamos parte del hardware para mejorar el rendimiento.
+
+- SATA Disk 1
+  - Disk bus: `VirtIO`
+- NIC
+  - Device model: `virtio`
+- Video
+  - Video model: `VGA`
+
+#### Le damos a `Begin Installation` y seguimos los pasos para instalar Windows
+
+- Cuando tengamos que seleccionar el disco para instalar Windows,
+  no aparecerá ningún disco, para solucionarlo, le damos a `Load driver`
+  y seleccionamos el CD con la ISO del VirtIO que agregamos anteriormente,
+  luego navegamos a amd64/w11 en Windows 11 o amd64/w10 en Windows 10
+  y seleccionamos el archivo `viostor.inf`
+
+Puedes continuar con el tutorial [aquí](2-HOST.md)

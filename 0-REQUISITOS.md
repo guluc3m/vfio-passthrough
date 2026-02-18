@@ -1,18 +1,18 @@
 # Requisitos de software
 
-### Archivos
+## Archivos
 
 - Obviamente se necesita una ISO de Windows, recomiendo Windows 11 IoT LTSC.
 - Drivers de [virtio](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.285-1/)
 
 NOTA: El driver para el Virtual Display NO funciona en Windows 10 IoT LTSC.
 
-### Estos son los paquetes necesarios para seguir este tutorial (nombres que se les da en Arch Linux)
+## Paquetes necesarios (Arch Linux)
 
 - ```dkms```
 - ```virt-manager```
 - ```qemu-desktop```
-- edk2-ovmf
+- `edk2-ovmf`
 - ```dmidecode``` (Para los anticheat)
 - Un kernel con soporte para ```VFIO``` (para el tutorial usamos ```linux-zen```)
   - Nota: Se tiene que editar el bootloader (```GRUB, systemd-boot, ...```)
@@ -65,4 +65,4 @@ cómo ```01:00.1``` (Su dispositivo de audio).
 
 NOTA IMPORTANTE: NO PASAR LOS ```Bridge```, (incluye los ```PCI Bridge```).
 
-Puedes continuar [aquí](https://github.com/guluc3m/vfio-passthrough/blob/main/1-VM.md)
+Puedes continuar [aquí](./1-VM.md)

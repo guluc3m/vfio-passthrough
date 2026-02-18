@@ -52,4 +52,4 @@ Términos:
 - ```iGPU``` La tarjeta gráfica que estará en el Host
 - ```dGPU``` La tarjeta gráfica que vamos a pasar la VM / Guest
 
-Entendiendo todo esto, puedes empezar [aquí](https://github.com/guluc3m/vfio-passthrough/blob/main/0-REQUISITOS.md).
+Entendiendo todo esto, puedes empezar [aquí](./0-REQUISITOS.md).
