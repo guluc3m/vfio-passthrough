@@ -63,6 +63,118 @@ Si aparece ```QEMU/KVM Not Connected```, se debe activar el servicio de ```syste
 sudo systemctl enable --now libvirtd
 ```
 
-NOTA: se pueden activar módulos por separado (mirar ```virtqemud*```)
+NOTA: se pueden activar módulos por separado (mirar ```virtqemud*```), si se decide
+activar módulos por separado, desactivar `libvirtd` para evitar conflictos.
+
+### Opciones de virt-manager
+
+Vamos a Edit > Preferences > General > Enable XML editing activado
+
+### Opciones de creación de la VM
 
 Vamos a ```File > New Virtual Machine``` y seleccionamos las siguientes opciones:
+
+#### Step 1 of 5
+
+- `Local install media (ISO image or CDROM)`
+- Architecture options > Architecture: `x86_64`
+
+#### Step 2 of 5
+
+- `Browse > Local > Buscar la imagen ISO de Windows`
+- NOTA: Si no se detecta automaticamente el sistema operativo, desactivar
+`Automatically detect operating system` y seleccionar la versión de Windows
+que se va a instalar.
+
+#### Step 3 of 5
+
+En la pestaña `Memory and CPU`, asignar la cantidad de memoria RAM y
+núcleos de CPU que se le va a asignar a la máquina virtual.
+
+Recomendamos la mitad de los nucleos de la CPU y la mitad de la RAM.
+
+#### Step 4 of 5
+
+- `Enable storage for this virtual machine` activado
+- `Create a disk image for the virtual machine` seleccionado
+  - Aquí ponemos la cantidad de almacenamiento que se le va a asignar
+  a la máquina virtual, recomendamos al menos 50GB.
+
+#### Step 5 of 5
+
+- Activamos "Customize configuration before install"
+- Si sale "Virtual network is not active." entonces se debe activar la red
+virtual con el comando:
+
+```bash
+sudo virsh net-autostart --network default
+```
+
+### Opciones de la VM
+
+#### NOTA: Seguir los pasos con MUCHO cuidado
+
+#### 1. Overview
+
+- Chipset: `Q35`
+- Firmware: `UEFI x86_64: OVMF_CODE_secboot.fd` para Windows 11
+- `UEFI x86_64: OVMF_CODE.fd` para Windows 10
+  - NOTA: Si NO sale, se debe instalar el paquete `edk2-ovmf`
+  y reiniciar `virt-manager`
+-
+
+#### 2. CPUs
+
+##### Para procesadores Intel de 12ava en adelante
+
+Ejecutamos el comando: ```lscpu -e=CPU,MAXMHZ```
+
+```bash
+❯ lscpu -e=CPU,MAXMHZ
+CPU    MAXMHZ
+  0 5200.0000
+  1 5200.0000
+  2 5200.0000
+  3 5200.0000
+  4 5400.0000
+  5 5400.0000
+  6 5400.0000
+  7 5400.0000
+  8 5200.0000
+  9 5200.0000
+ 10 5200.0000
+ 11 5200.0000
+ 12 4100.0000
+ 13 4100.0000
+ 14 4100.0000
+ 15 4100.0000
+ 16 4100.0000
+ 17 4100.0000
+ 18 4100.0000
+ 19 4100.0000
+```
+
+Aquí observamos 2 grupos marcados, del nucleo 0-12 tenemos una
+frecuencia de 5200-5400MHz, y del nucleo 12-19 tenemos una frecuencia de 4100MHz,
+esto se debe a que los nucleos 0-12 son nucleos de rendimiento,
+y los nucleos 12-19 son nucleos de eficiencia,
+por lo tanto, se deben asignar los nucleos de rendimiento a
+la máquina virtual, en este caso, los nucleos 0-11.
+
+Para estar completamente seguros, se puede hacer lo siguiente:
+
+```bash
+❯ lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1'
+13th Gen Intel(R) Core(TM) i9-13900H
+```
+
+Con el modelo de la CPU, lo buscamos online para ver las características
+
+- En mi caso:
+  - Tengo 20 hilos, 6 P-cores (cada uno tiene 2 hilos) y 8 E-cores
+  - A la maquina virtual le asigno los 6 P-cores, es decir, los hilos 0-11
+
+#### 3. SMBIOS (OPCIONAL)
+
+- Este paso complementa el apartado de `Recopilando información`, en caso que no se siga,
+  este paso se puede omitir.
