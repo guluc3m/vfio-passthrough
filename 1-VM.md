@@ -57,14 +57,14 @@ NOTA: Si has decidido agregar la clave de UUID, guárdala, la necesitaras luego.
 
 Ejecutamos ```virt-manager```
 
-Si aparece ```QEMU/KVM Not Connected```, se debe activar el servicio de ```systemd```:
+Si aparece ```QEMU/KVM Not Connected```, se debe **activar el servicio de ```systemd```**:
 
 ```bash
 sudo systemctl enable --now libvirtd
 ```
 
 NOTA: se pueden activar módulos por separado (mirar ```virtqemud*```), si se decide
-activar módulos por separado, desactivar `libvirtd` para evitar conflictos.
+activar módulos por separado, **desactivar `libvirtd` para evitar conflictos**.
 
 ### Opciones de virt-manager
 
@@ -199,7 +199,7 @@ Por tanto mi configuración de CPU quedaría así:
 Esto va en el XML de la máquina virtual. Para editar el XML,
 vamos a `Overview > XML` y metemos este trozo de código dentro de la etiqueta `<domain>`.
 
-#### Para otros procesadores
+##### Para otros procesadores
 
 - Asignar los nucleos deseados, se recomienda un mínimo de 4.
 
@@ -248,4 +248,4 @@ Cambiamos parte del hardware para mejorar el rendimiento.
   luego navegamos a amd64/w11 en Windows 11 o amd64/w10 en Windows 10
   y seleccionamos el archivo `viostor.inf`
 
-Puedes continuar con el tutorial [aquí](2-HOST.md)
+Puedes continuar con el tutorial [aquí](2-LookingGlass.md)

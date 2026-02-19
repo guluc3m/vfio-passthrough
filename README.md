@@ -41,8 +41,7 @@ En el siguiente software:
 - Arch Linux
 - ```linux-zen``` Kernel
 - ```systemd-boot```
-
-TODO: poner una captura del fastfetch y out
+- pipewire
 
 Términos:
 
