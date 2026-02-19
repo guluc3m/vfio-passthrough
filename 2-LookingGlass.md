@@ -28,6 +28,7 @@ $$
 
 Luego, el resultado se redondea **hacia arriba a
 la siguiente potencia de 2**, es decir:
+
 $$
 \text{Memoria reservada (MB)} = 2^{\lceil \log_2(\text{Memoria (MB)}) \rceil}
 $$
