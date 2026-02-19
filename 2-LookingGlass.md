@@ -39,33 +39,33 @@ $$
 
 1. **Cálculo base:**
 
-   $$
-   \frac{(1920 \times 1080 \times 4 \times 2)}{1024^2}
-   $$
+$$
+\frac{(1920 \times 1080 \times 4 \times 2)}{1024^2}
+$$
 
-   $$
-   1920 \times 1080 = 2,\!073,\!600
-   $$
+$$
+1920 \times 1080 = 2,\!073,\!600
+$$
 
-   $$
-   2,\!073,\!600 \times 4 \times 2 = 16,\!588,\!800
-   $$
+$$
+2,\!073,\!600 \times 4 \times 2 = 16,\!588,\!800
+$$
 
-   $$
-   \frac{16,\!588,\!800}{1,\!048,\!576} \approx 15.83~\text{MB}
-   $$
+$$
+\frac{16,\!588,\!800}{1,\!048,\!576} \approx 15.83~\text{MB}
+$$
 
-2. **Sumar 10 MB:**
+1. **Sumar 10 MB:**
 
-   $$
-   15.83 + 10 = 25.83 ~\text{MB}
-   $$
+$$
+15.83 + 10 = 25.83 ~\text{MB}
+$$
 
-3. **Redondear a la siguiente potencia de 2:**
+1. **Redondear a la siguiente potencia de 2:**
 
-   $$
-   2^{\lceil \log_2(25.83) \rceil} = 2^{5} = 32~\text{MB}
-   $$
+$$
+2^{\lceil \log_2(25.83) \rceil} = 2^{5} = 32~\text{MB}
+$$
 
 NOTA: Bytes por Pixel es 4 para SDR, y 8 para HDR.
 
