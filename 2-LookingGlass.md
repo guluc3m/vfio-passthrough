@@ -37,7 +37,7 @@ $$
 
 #### Ejemplo: 1080p SDR (1920 × 1080, 4 bytes por píxel)
 
-1. **Cálculo base:**
+- **Cálculo base:**
 
 $$
 \frac{(1920 \times 1080 \times 4 \times 2)}{1024^2}
@@ -55,13 +55,13 @@ $$
 \frac{16,\!588,\!800}{1,\!048,\!576} \approx 15.83~\text{MB}
 $$
 
-1. **Sumar 10 MB:**
+- **Sumar 10 MB:**
 
 $$
 15.83 + 10 = 25.83 ~\text{MB}
 $$
 
-1. **Redondear a la siguiente potencia de 2:**
+- **Redondear a la siguiente potencia de 2:**
 
 $$
 2^{\lceil \log_2(25.83) \rceil} = 2^{5} = 32~\text{MB}
