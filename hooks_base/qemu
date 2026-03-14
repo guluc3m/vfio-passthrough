@@ -1,0 +1,50 @@
+#!/bin/sh
+# libvirt QEMU hook entrypoint with simple dispatcher for the qemu.d tree:
+#
+# /etc/libvirt/hooks/qemu.d/<domain>/<op>/<subop>/*.sh
+#
+# libvirt calls: qemu <domain> <op> <subop> <extra>
+# Example:       qemu win11 prepare begin -
+#
+# This script runs every executable file in the matching directory in
+# lexicographic order, and logs stdout/stderr to a per-domain file.
+
+set -eu
+
+BASE="/etc/libvirt/hooks/qemu.d"
+DOMAIN="${1:-}"
+OP="${2:-}"
+SUBOP="${3:-}"
+EXTRA="${4:-}"
+
+# Where to log. (virtqemud runs hooks as root, so /var/log is fine)
+LOGDIR="/var/log/libvirt/hooks"
+LOGFILE="${LOGDIR}/qemu-${DOMAIN}.log"
+
+mkdir -p "$LOGDIR"
+
+ts() { date -Is; }
+
+echo "[$(ts)] ENTER domain=$DOMAIN op=$OP subop=$SUBOP extra=$EXTRA" >> "$LOGFILE"
+
+DIR="${BASE}/${DOMAIN}/${OP}/${SUBOP}"
+
+# Run domain/op/subop scripts if present
+if [ -d "$DIR" ]; then
+  # Only run executable regular files, in lexical order
+  for script in "$DIR"/*; do
+    [ -f "$script" ] || continue
+    [ -x "$script" ] || continue
+    echo "[$(ts)] RUN $script $DOMAIN $OP $SUBOP $EXTRA" >> "$LOGFILE"
+    "$script" "$DOMAIN" "$OP" "$SUBOP" "$EXTRA" >>"$LOGFILE" 2>&1
+    rc=$?
+    echo "[$(ts)] DONE rc=$rc $script" >> "$LOGFILE"
+    # If any script fails, propagate failure to libvirt
+    [ "$rc" -eq 0 ] || exit "$rc"
+  done
+else
+  echo "[$(ts)] SKIP no dir: $DIR" >> "$LOGFILE"
+fi
+
+echo "[$(ts)] EXIT success" >> "$LOGFILE"
+exit 0
