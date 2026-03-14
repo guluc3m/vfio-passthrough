@@ -82,7 +82,7 @@ USING_NVIDIA=1
 ```
 
 NOTA: Los valores de `GPU` y `AUDIO` deben ser los mismos en ambos hooks,
-y deben estar en el mismo IOMMU, en [0-REQUISITOS.md](./0-REQUISITOS.md)
+y deben estar en el mismo IOMMU, en [0-Requisitos.md](./0-Requisitos.md)
 está explicado como comprobar esto y los valores correctos a poner
 
 Para hacer que los scripts funcionen debes completar
