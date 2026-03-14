@@ -2,7 +2,7 @@
 
 Tutorial (en proceso) de cómo hacer una máquina virtual con la GPU en Linux.
 
-<video controls src="./media/gpu_passthrough.mp4"></video>
+[![Preview del video](./media/gpu_passthrough.gif)](./media/gpu_passthrough.mp4)
 
 ## ATENCIÓN! ESTE TUTORIAL NO ES PARA PRINCIPIANTES
 
