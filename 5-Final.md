@@ -85,6 +85,37 @@ setfacl -m u:libvirt-qemu:x /run/user/1000
 setfacl -m u:libvirt-qemu:rw /run/user/1000/pulse/native
 ```
 
+## Configuración de Looking Glass (Host)
+
+`looking-glass-client` tiene varias opciones de configuración, para verlas:
+
+```bash
+looking-glass-client --help
+```
+
+Si queremos hacer los cambios permanentes, podemos crear el archivo de configuración
+`~/.config/looking-glass/client.ini`, yo por ejemplo, tengo esta configuración:
+
+```ini
+[win]
+borderless=yes
+disableWaitingMessage=yes
+title=Windows 11 (Looking Glass)
+
+[input]
+autoCapture=yes
+escapeKey=97
+helpMenuDelay=1000
+ignoreWindowsKeys=yes
+
+[spice]
+audio=no
+captureOnStart=yes
+```
+
+NOTA: Para mas información sobre las opciones de configuración,
+se puede consultar la [documentación oficial](https://looking-glass.io/docs/B7/usage/#configuration-files)
+
 ## Script para iniciar la VM
 
 Para que sea más fácil iniciar la `VM`, he proporcionado [aquí](./vm-entry/)
@@ -103,4 +134,4 @@ Y ya estaría, ahora podemos buscar `Windows 11` en el menú de
 aplicaciones y abrir la `VM` con un click
 
 NOTA: Cuando se cierra looking glass, la `VM` se apaga,
-si queremos cambiar este comportamiento se debe editar el script `run-win11-vm.sh`.
+si queremos cambiar este comportamiento se debe editar el script `run-win11-vm.sh`
