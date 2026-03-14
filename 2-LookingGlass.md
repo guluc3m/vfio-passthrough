@@ -167,4 +167,23 @@ size = 32 * 1024 * 1024 = 33554432
 
 ---
 
+## Looking Glass en la VM
+
+### Host de Looking Glass
+
+Encendemos la maquina virtual, abrimos nuestro navegador y accedemos a
+la página de [Looking Glass](https://looking-glass.io/)
+
+Descargamos e instalamos el "Host Win64" equivalente a la versión de
+cliente que tenemos en Linux.
+
+### Driver Virtual de Pantalla
+
+Para no tener que usar un HDMI Dummy Plug, usamos un driver virtual para la pantalla
+de Looking Glass, para ello podemos seguír las instrucciones aquí:
+[Virtual Display Driver](https://github.com/VirtualDrivers/Virtual-Display-Driver)
+
+Personalmente recomiendo usar "VDD.Control" para configurar el driver,
+ya que es más sencillo de usar.
+
 Puedes continuar aquí
