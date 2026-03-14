@@ -181,9 +181,10 @@ cliente que tenemos en Linux.
 
 Para no tener que usar un HDMI Dummy Plug, usamos un driver virtual para la pantalla
 de Looking Glass, para ello podemos seguír las instrucciones aquí:
-[Virtual Display Driver](https://github.com/VirtualDrivers/Virtual-Display-Driver)
+[Virtual Display Driver](https://github.com/VirtualDrivers/Virtual-Display-Driver),
+este driver se instala en la `VM`
 
 Personalmente recomiendo usar "VDD.Control" para configurar el driver,
-ya que es más sencillo de usar.
+ya que es más sencillo de usar debido a su interfaz
 
-Puedes continuar aquí
+Puedes continuar [aquí](./3-QEMUHooks.md)

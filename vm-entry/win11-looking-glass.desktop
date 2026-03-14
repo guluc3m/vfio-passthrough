@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Windows 11 (Looking Glass)
+Comment=Start Win11 VM, launch Looking Glass, shutdown VM on exit
+Exec=/ruta/a/run-win11-vm.sh
+Terminal=false
+Categories=System;Emulator;
+StartupNotify=false
+Icon=windows-color-icon

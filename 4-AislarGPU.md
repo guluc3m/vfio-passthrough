@@ -205,3 +205,27 @@ USING_NVIDIA=1
 NOTA: Los valores de `GPU` y `AUDIO` deben ser los mismos en ambos hooks,
 y deben estar en el mismo IOMMU, en [0-REQUISITOS.md](./0-REQUISITOS.md)
 está explicado como comprobar esto y los valores correctos a poner
+
+##### Ventajas
+
+- No hace falta tener una sesión dedicada a usar la `dGPU`
+
+##### Desventajas
+
+- Se puede dar el caso en el que los procesos
+que usan la `dGPU` no mueren, y por tanto aparece un error.
+- Mas complejo de configurar
+- Pueden aparecer kernel panics
+
+## 2. Añadir la tarjeta gráfica a la máquina virtual
+
+Vamos a `virt-manager`, editamos la máquina virtual,
+`Add Hardware > PCI Host Device > elemento > Finish`
+
+Repetimos estos pasos con todos los elementos del Grupo IOMMU
+pertenecientes a la tarjeta gráfica que queremos pasar a la máquina virtual
+
+En mi caso he añadido `0000:01:00.0` y `0000:01:00.1`
+que corresponden a la tarjeta gráfica y su audio respectivamente
+
+Ya casi hemos terminado, para los últimos pasos sigue los pasos [aquí](./5-Final.md)
