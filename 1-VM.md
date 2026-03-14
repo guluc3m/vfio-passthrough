@@ -247,5 +247,8 @@ Cambiamos parte del hardware para mejorar el rendimiento.
   y seleccionamos el CD con la ISO del VirtIO que agregamos anteriormente,
   luego navegamos a amd64/w11 en Windows 11 o amd64/w10 en Windows 10
   y seleccionamos el archivo `viostor.inf`
+- Al terminar la instalación, se deben instalar las herramientas de VirtIO,
+para ello ejecutamos `virtio-win-guest-tools.exe` del DVD de VirtIO dentro
+de la máquina virtual.
 
 Puedes continuar con el tutorial [aquí](2-LookingGlass.md)
