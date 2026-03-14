@@ -15,7 +15,7 @@ se intenta "bindear" a la `VM`
 
 ## Hooks Básicos
 
-En [esta carpeta](./scripts_base/) están los scripts base,
+En [esta carpeta](./hooks_base/) están los scripts base,
 para usarlos, se debe copiar los contenidos a
 `/etc/libvirt/hooks/`:
 
