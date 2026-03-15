@@ -1,6 +1,6 @@
 # vfio-passthrough
 
-Tutorial (en proceso) de cómo hacer una máquina virtual con la GPU en Linux.
+Tutorial de cómo hacer una máquina virtual pasando una tarjeta gráfica desde Linux.
 
 [![Preview del video](./media/gpu_passthrough.gif)](./media/gpu_passthrough.mp4)
 
