@@ -2,7 +2,7 @@
 
 Tutorial de cómo hacer una máquina virtual pasando una tarjeta gráfica desde Linux.
 
-[![Preview del video](./media/gpu_passthrough.gif)](./media/gpu_passthrough.mp4)
+[![Preview del video](./media/gpu_passthrough.gif)](./media/gpu_passthrough.gif)
 
 ## ATENCIÓN! ESTE TUTORIAL NO ES PARA PRINCIPIANTES
 
